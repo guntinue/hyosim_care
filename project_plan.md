@@ -8,15 +8,25 @@
 - [x] .gitignore 및 환경 변수 예제 파일 작성
 - [x] main.py 메인 진입점 작성
 
-## Phase 2: 도메인 및 데이터 레이어 (Core & Data) 🚧 진행 중
+## Phase 2: 도메인 및 데이터 레이어 (Core & Data) ✅ 완료
 - [x] 핵심 엔티티 설계: `Patient`, `Staff`, `VisitLog`, `Schedule`
 - [x] 데이케어 확장을 고려한 `ServiceType` 구분 로직 설계
-- [ ] Repository 인터페이스 및 SQLAlchemy 기반 구현체 작성 (다음 단계)
+- [x] Repository 인터페이스 및 SQLAlchemy 기반 구현체 작성
+  - [x] BaseRepository (제네릭 인터페이스)
+  - [x] PatientRepository (고객 CRUD 및 검색)
+  - [x] StaffRepository (직원 CRUD 및 역할별 조회)
+  - [x] ScheduleRepository (일정 CRUD 및 시간 충돌 검증)
+  - [x] VisitLogRepository (방문 일지 CRUD 및 통계)
+- [ ] Git Flow 브랜치 초기화 및 GitHub Repository 설정 (향후)
+- [ ] GitHub Actions CI 워크플로우 구축 (향후)
 
-## Phase 3: 비즈니스 로직 구현 (Service Layer)
-- [ ] 방문요양/사회복지사 매칭 로직
-- [ ] **중요**: 일정 중복 방지 검증 알고리즘 구현
-- [ ] 급여 및 서비스 비용 계산 모듈(추후 확장 대비)
+## Phase 3: 비즈니스 로직 구현 (Service Layer) 🚧 다음 단계
+- [ ] PatientService: 고객 관리 비즈니스 로직
+- [ ] StaffService: 직원 관리 비즈니스 로직
+- [ ] ScheduleService: 일정 관리 및 **중복 방지 검증 알고리즘** 구현
+- [ ] VisitLogService: 방문 일지 작성 및 통계 로직
+- [ ] MatchingService: 방문요양/사회복지사 매칭 로직 (향후)
+- [ ] 급여 및 서비스 비용 계산 모듈 (향후 확장 대비)
 
 ## Phase 4: UI 개발 (Presentation)
 - [ ] 관리자용 메인 대시보드 (PyQt6)
@@ -31,7 +41,7 @@
 ---
 ## 📅 현재 진행 상황 및 히스토리
 - **2026-04-21 오전**: 프로젝트 초기 아키텍처 설계 완료 및 `Claude.md`, `project_plan.md` 작성
-- **2026-04-21 오후**: Phase 1 기반 구조 설정 완료
+- **2026-04-21 오후 (1차)**: Phase 1 기반 구조 설정 완료
   - 프로젝트 디렉토리 구조 생성 (클린 아키텍처)
   - requirements.txt 작성 (PyQt6, SQLAlchemy, pysqlcipher3 등)
   - settings.py 작성 (로깅 시스템 포함)
@@ -40,7 +50,14 @@
   - main.py 메인 진입점 작성
   - .gitignore, .env.example 작성
   - README.md 업데이트
-- **Next Step**: Phase 2 - Repository 레이어 구현 (CRUD 인터페이스 및 구현체)
+- **2026-04-21 오후 (2차)**: Phase 2 완료 - Repository 레이어 구현
+  - BaseRepository 인터페이스 작성 (제네릭 타입, ABC 패턴)
+  - PatientRepository 구현 (CRUD + 이름/전화번호/서비스타입별 검색)
+  - StaffRepository 구현 (CRUD + 역할별/자격증별 검색)
+  - ScheduleRepository 구현 (CRUD + **시간 충돌 검증 로직** 포함)
+  - VisitLogRepository 구현 (CRUD + 통계 쿼리)
+  - Repository 모듈 패키지 정리 (__init__.py)
+- **Next Step**: Phase 3 - Service 레이어 구현 (비즈니스 로직 및 유스케이스)
 
 ## 🚩 미해결 이슈 및 메모
 - [ ] SQLite 암호화 라이브러리(`pysqlcipher3`)가 Windows 환경에서 컴파일 에러가 발생하는지 확인 필요

@@ -24,12 +24,28 @@
   - `repository`: 데이터 액세스 인터페이스 및 구현
   - `ui`: PyQt6 기반의 프레젠테이션 레이어
 
-## 4. 개발 원칙 (Critical)
+## 4. 브랜치 전략 (Git Flow)
+
+main: 최종 배포용 브랜치 (PyInstaller로 빌드된 .exe의 소스 코드)
+
+dev: 다음 버전을 위한 개발 브랜치 (기능 통합)
+
+feat/: 각 기능 개발 (예: feature/db-encryption, feature/schedule-algorithm)
+
+refactor/: 코드 리팩토링
+
+release/: 배포 전 QA 및 최종 버그 수정
+
+hotfix/: 배포 후 발생한 긴급 버그 수정
+
+## 5. 개발 원칙 (Critical)
 1. **Security First**: 민감 정보는 반드시 DB 암호화 및 서비스 레이어 내 암호화 로직을 거친다.
 2. **Business Logic Isolation**: 모든 검증(일정 중복 등)은 UI가 아닌 Service 레이어에서 수행한다.
 3. **Robustness**: `logging`을 통한 로컬 로그 기록 및 SQLite `Database is locked` 방지를 위한 세션 관리 철저.
+4. **Git Strategy**: Git Flow를 준수한다. 모든 작업은 `feature/` 브랜치에서 시작하며 `dev`로 머지한다.
+5. **Async Architecture**: 시스템 확장성을 위해 RabbitMQ 기반의 메시징 구조를 염두에 둔다. (CI 환경에서는 GitHub Actions Service 활용)
 
-## 5. 작업 프로세스 및 문서화 규칙 (Workflow)
+## 6. 작업 프로세스 및 문서화 규칙 (Workflow)
 1. **Self-Updating Roadmap**: 모든 기능 구현이나 주요 설계 변경이 완료된 후에는 반드시 `project_plan.md` 파일을 업데이트한다.
    - 완료된 태스크는 `[ ]`에서 `[x]`로 변경한다.
    - 작업 중 발견된 새로운 이슈나 하위 태스크는 즉시 `project_plan.md`에 추가한다.
