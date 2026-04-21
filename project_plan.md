@@ -23,18 +23,31 @@
   - [x] GitHub 원격 저장소 연동 완료
 - [ ] GitHub Actions CI 워크플로우 구축 (Phase 5에서 진행 예정)
 
-## Phase 3: 비즈니스 로직 구현 (Service Layer) 🚧 다음 단계
-- [ ] PatientService: 고객 관리 비즈니스 로직
-- [ ] StaffService: 직원 관리 비즈니스 로직
-- [ ] ScheduleService: 일정 관리 및 **중복 방지 검증 알고리즘** 구현
-- [ ] VisitLogService: 방문 일지 작성 및 통계 로직
-- [ ] MatchingService: 방문요양/사회복지사 매칭 로직 (향후)
+## Phase 3: 비즈니스 로직 구현 (Service Layer) ✅ 완료
+- [x] BaseService: Service 레이어 기본 클래스 작성
+- [x] PatientService: 고객 관리 비즈니스 로직
+  - 고객 등록/수정/삭제 (전화번호 중복 검증)
+  - 이름/전화번호/서비스타입/등급별 검색
+- [x] StaffService: 직원 관리 비즈니스 로직
+  - 직원 등록/수정/퇴사 처리 (전화번호/자격증 중복 검증)
+  - 역할별/자격증별 조회
+- [x] ScheduleService: 일정 관리 및 **중복 방지 검증 알고리즘** 구현 ⭐
+  - 일정 생성 시 직원/고객 시간 충돌 검증
+  - 일정 수정/삭제/완료 처리
+  - 날짜별/직원별/고객별 일정 조회
+- [x] VisitLogService: 방문 일지 작성 및 통계 로직
+  - 방문 일지 생성/수정/삭제
+  - 출퇴근 체크인/체크아웃
+  - 고객별/직원별 방문 횟수 통계
+- [ ] MatchingService: 방문요양/사회복지사 매칭 로직 (Phase 4 이후)
 - [ ] 급여 및 서비스 비용 계산 모듈 (향후 확장 대비)
 
-## Phase 4: UI 개발 (Presentation)
+## Phase 4: UI 개발 (Presentation) 🚧 다음 단계
 - [ ] 관리자용 메인 대시보드 (PyQt6)
 - [ ] 고객/직원 등록 및 관리 화면
 - [ ] 캘린더 형태의 일정 관리 뷰
+- [ ] 방문 일지 작성 화면
+- [ ] 통계 및 리포트 화면
 
 ## Phase 5: 보안 및 배포 최적화 (Security & Deployment)
 - [ ] 데이터 백업/복구 유틸리티 개발
@@ -64,7 +77,14 @@
   - Phase 2 작업 main 브랜치에 커밋
   - dev 브랜치 생성 및 GitHub 원격 저장소에 push
   - 향후 기능 개발은 dev 브랜치에서 진행 예정
-- **Next Step**: Phase 3 - Service 레이어 구현 (비즈니스 로직 및 유스케이스)
+- **2026-04-21 오후 (4차)**: Phase 3 완료 - Service 레이어 구현
+  - BaseService 작성 (DatabaseManager 통합)
+  - PatientService 구현 (전화번호 중복 검증 포함)
+  - StaffService 구현 (전화번호/자격증 중복 검증 포함)
+  - ScheduleService 구현 (**시간 충돌 검증 알고리즘** 포함) ⭐
+  - VisitLogService 구현 (출퇴근 체크인/통계 기능)
+  - Service 모듈 패키지 정리 (__init__.py)
+- **Next Step**: Phase 4 - UI 레이어 구현 (PyQt6 기반 관리 화면)
 - **현재 브랜치**: `dev` (개발용)
 
 ## 🚩 미해결 이슈 및 메모
