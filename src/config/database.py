@@ -39,13 +39,12 @@ class DatabaseManager:
             return
 
         try:
-            # SQLCipher를 사용한 암호화 SQLite 연결 문자열
-            # pysqlcipher3 사용 시 형식
-            db_url = f"sqlite+pysqlcipher://:{DB_ENCRYPTION_KEY}@/{DB_PATH}?cipher=aes-256-cfb&kdf_iter=64000"
+            # 개발 환경: 일반 SQLite 사용
+            db_url = f"sqlite:///{DB_PATH}"
 
-            # 개발 중 pysqlcipher3 설치 문제가 있을 경우 일반 SQLite로 대체
-            # 배포 시에는 반드시 암호화된 버전 사용 필요
-            # db_url = f"sqlite:///{DB_PATH}"
+            # 배포 환경: SQLCipher 암호화 사용 (pysqlcipher3 필요)
+            # db_url = f"sqlite+pysqlcipher://:{DB_ENCRYPTION_KEY}@/{DB_PATH}?cipher=aes-256-cfb&kdf_iter=64000"
+            logger.warning("⚠️  개발 모드: 암호화 없이 일반 SQLite 사용 중 (배포 시 SQLCipher 필수)")
 
             self._engine = create_engine(
                 db_url,

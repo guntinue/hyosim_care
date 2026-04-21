@@ -56,7 +56,18 @@ cp .env.example .env
 # .env 파일을 열어서 DB_ENCRYPTION_KEY를 안전한 값으로 변경하세요
 ```
 
-### 4. 실행
+### 4. 코드 검증 (커밋 전 필수)
+
+```bash
+python verify_code.py
+```
+
+**검증 항목:**
+- ✅ 모든 모듈 import 확인
+- ✅ 데이터베이스 테이블 생성 확인
+- ✅ 기본 CRUD 작동 확인
+
+### 5. 실행
 
 ```bash
 python main.py
@@ -78,15 +89,13 @@ python main.py
 
 ## 📝 개발 상태
 
-현재 **Phase 1: 기반 구조 설정** 완료
+현재 **Phase 3: Service 레이어 구현** 완료
 
-- [x] 프로젝트 구조 설계
-- [x] 데이터베이스 암호화 연결
-- [x] 도메인 모델 정의
-- [x] 로깅 시스템 구축
-- [ ] Repository 레이어 구현 (다음 단계)
-- [ ] Service 레이어 구현
-- [ ] UI 개발
+- [x] Phase 1: 기반 구조 설정 완료
+- [x] Phase 2: Repository 레이어 구현 완료
+- [x] Phase 3: Service 레이어 구현 완료 (시간 충돌 검증 포함)
+- [ ] Phase 4: UI 개발 (다음 단계)
+- [ ] Phase 5: 보안 및 배포 최적화
 
 자세한 로드맵은 [project_plan.md](./project_plan.md) 참조
 

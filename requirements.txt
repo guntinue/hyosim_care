@@ -3,8 +3,8 @@ PyQt6==6.6.1
 PyQt6-Qt6==6.6.1
 
 # Database & ORM
-SQLAlchemy==2.0.25
-pysqlcipher3==1.2.0
+SQLAlchemy>=2.0.36  # Python 3.14+ 호환
+# pysqlcipher3==1.2.0  # 배포 시 필요, 개발 환경에서는 일반 SQLite 사용
 
 # Security
 cryptography==42.0.2
@@ -13,9 +13,9 @@ cryptography==42.0.2
 python-dotenv==1.0.0
 
 # Development & Build
-PyInstaller==6.3.0
-pytest==7.4.4
-pytest-qt==4.3.1
+PyInstaller>=6.15.0  # Python 3.14+ 호환
+pytest>=7.4.0
+pytest-qt>=4.3.0
 
 # Logging (built-in, but for reference)
 # logging (standard library)
