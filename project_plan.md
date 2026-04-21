@@ -17,8 +17,11 @@
   - [x] StaffRepository (직원 CRUD 및 역할별 조회)
   - [x] ScheduleRepository (일정 CRUD 및 시간 충돌 검증)
   - [x] VisitLogRepository (방문 일지 CRUD 및 통계)
-- [ ] Git Flow 브랜치 초기화 및 GitHub Repository 설정 (향후)
-- [ ] GitHub Actions CI 워크플로우 구축 (향후)
+- [x] Git Flow 브랜치 초기화 및 GitHub Repository 설정
+  - [x] main 브랜치 (최종 배포용)
+  - [x] dev 브랜치 (개발용)
+  - [x] GitHub 원격 저장소 연동 완료
+- [ ] GitHub Actions CI 워크플로우 구축 (Phase 5에서 진행 예정)
 
 ## Phase 3: 비즈니스 로직 구현 (Service Layer) 🚧 다음 단계
 - [ ] PatientService: 고객 관리 비즈니스 로직
@@ -57,7 +60,12 @@
   - ScheduleRepository 구현 (CRUD + **시간 충돌 검증 로직** 포함)
   - VisitLogRepository 구현 (CRUD + 통계 쿼리)
   - Repository 모듈 패키지 정리 (__init__.py)
+- **2026-04-21 오후 (3차)**: Git Flow 브랜치 전략 적용
+  - Phase 2 작업 main 브랜치에 커밋
+  - dev 브랜치 생성 및 GitHub 원격 저장소에 push
+  - 향후 기능 개발은 dev 브랜치에서 진행 예정
 - **Next Step**: Phase 3 - Service 레이어 구현 (비즈니스 로직 및 유스케이스)
+- **현재 브랜치**: `dev` (개발용)
 
 ## 🚩 미해결 이슈 및 메모
 - [ ] SQLite 암호화 라이브러리(`pysqlcipher3`)가 Windows 환경에서 컴파일 에러가 발생하는지 확인 필요
