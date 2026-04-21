@@ -1,0 +1,21 @@
+# Core Framework
+PyQt6==6.6.1
+PyQt6-Qt6==6.6.1
+
+# Database & ORM
+SQLAlchemy==2.0.25
+pysqlcipher3==1.2.0
+
+# Security
+cryptography==42.0.2
+
+# Utilities
+python-dotenv==1.0.0
+
+# Development & Build
+PyInstaller==6.3.0
+pytest==7.4.4
+pytest-qt==4.3.1
+
+# Logging (built-in, but for reference)
+# logging (standard library)
