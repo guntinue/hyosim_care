@@ -42,8 +42,14 @@
 - [ ] MatchingService: 방문요양/사회복지사 매칭 로직 (Phase 4 이후)
 - [ ] 급여 및 서비스 비용 계산 모듈 (향후 확장 대비)
 
-## Phase 4: UI 개발 (Presentation) 🚧 다음 단계
-- [ ] 관리자용 메인 대시보드 (PyQt6)
+## Phase 4: UI 개발 (Presentation) 🚧 진행 중
+- [x] 관리자용 메인 대시보드 (PyQt6)
+  - [x] MainWindow 클래스 구현
+  - [x] DashboardCard 위젯 (통계 카드)
+  - [x] 헤더 영역 (타이틀, 버전 정보)
+  - [x] 빠른 작업 버튼 영역 (고객/직원 등록, 일정 관리, 방문 일지)
+  - [x] 최근 활동 영역 (플레이스홀더)
+  - [ ] 실시간 통계 데이터 연동 (Service 레이어)
 - [ ] 고객/직원 등록 및 관리 화면
 - [ ] 캘린더 형태의 일정 관리 뷰
 - [ ] 방문 일지 작성 화면
@@ -84,8 +90,16 @@
   - ScheduleService 구현 (**시간 충돌 검증 알고리즘** 포함) ⭐
   - VisitLogService 구현 (출퇴근 체크인/통계 기능)
   - Service 모듈 패키지 정리 (__init__.py)
-- **Next Step**: Phase 4 - UI 레이어 구현 (PyQt6 기반 관리 화면)
-- **현재 브랜치**: `dev` (개발용)
+- **2026-04-22 오후**: Phase 4 시작 - 메인 대시보드 UI 구현
+  - feature/ui-main-dashboard 브랜치 생성
+  - MainWindow 클래스 구현 (헤더, 통계 카드, 빠른 작업 버튼)
+  - DashboardCard 위젯 구현
+  - main.py 수정 (UI 통합, 인코딩 문제 해결)
+  - 애플리케이션 실행 테스트 성공
+- **Next Step**:
+  - 고객/직원 등록 화면 구현 (feature/ui-patient-staff-form)
+  - 메인 대시보드에 실시간 통계 연동
+- **현재 브랜치**: `feature/ui-main-dashboard`
 
 ## 🚩 미해결 이슈 및 메모
 - [ ] SQLite 암호화 라이브러리(`pysqlcipher3`)가 Windows 환경에서 컴파일 에러가 발생하는지 확인 필요
