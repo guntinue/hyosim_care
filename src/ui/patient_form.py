@@ -220,6 +220,10 @@ class PatientForm(QDialog):
                 border: 1px solid #cccccc;
                 border-radius: 3px;
                 background-color: white;
+                color: #333333;
+            }
+            QLineEdit::placeholder, QTextEdit::placeholder {
+                color: #999999;
             }
             QLineEdit:focus, QTextEdit:focus, QComboBox:focus, QDateEdit:focus {
                 border: 2px solid #2196F3;
