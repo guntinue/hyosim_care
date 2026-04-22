@@ -42,7 +42,12 @@ hotfix/: 배포 후 발생한 긴급 버그 수정
 1. **Security First**: 민감 정보는 반드시 DB 암호화 및 서비스 레이어 내 암호화 로직을 거친다.
 2. **Business Logic Isolation**: 모든 검증(일정 중복 등)은 UI가 아닌 Service 레이어에서 수행한다.
 3. **Robustness**: `logging`을 통한 로컬 로그 기록 및 SQLite `Database is locked` 방지를 위한 세션 관리 철저.
-4. **Git Strategy**: Git Flow를 준수한다. 모든 작업은 `feature/` 브랜치에서 시작하며 `dev`로 머지한다.
+4. **Git Strategy**:
+   - ❌ **dev 브랜치에 직접 커밋/푸시 금지**
+   - ✅ 모든 작업은 `feature/` 브랜치에서 진행
+   - ✅ 기능 브랜치만 원격에 푸시
+   - ✅ dev 브랜치로의 머지는 **GitHub Pull Request를 통해서만** 수행
+   - 📄 자세한 워크플로우는 `.github/WORKFLOW.md` 참고
 5. **Async Architecture**: 시스템 확장성을 위해 RabbitMQ 기반의 메시징 구조를 염두에 둔다. (CI 환경에서는 GitHub Actions Service 활용)
 
 ## 6. 작업 프로세스 및 문서화 규칙 (Workflow)
