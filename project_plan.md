@@ -50,7 +50,18 @@
   - [x] 빠른 작업 버튼 영역 (고객/직원 등록, 일정 관리, 방문 일지)
   - [x] 최근 활동 영역 (플레이스홀더)
   - [ ] 실시간 통계 데이터 연동 (Service 레이어)
-- [ ] 고객/직원 등록 및 관리 화면
+- [x] 고객 등록 및 관리 화면
+  - [x] PatientForm 다이얼로그 구현
+  - [x] 기본 정보 입력 (이름, 생년월일, 연락처, 주소)
+  - [x] 서비스 정보 입력 (서비스 유형, 등급)
+  - [x] 보호자 정보 입력 (이름, 연락처, 관계)
+  - [x] 추가 정보 입력 (의료 정보, 메모)
+  - [x] 유효성 검증 (필수 필드 체크)
+  - [x] PatientService 연동 (등록/수정)
+  - [x] MainWindow 연동 (고객 등록 버튼)
+  - [ ] 고객 목록 조회 화면
+  - [ ] 고객 검색 기능
+- [ ] 직원 등록 및 관리 화면
 - [ ] 캘린더 형태의 일정 관리 뷰
 - [ ] 방문 일지 작성 화면
 - [ ] 통계 및 리포트 화면
@@ -90,16 +101,28 @@
   - ScheduleService 구현 (**시간 충돌 검증 알고리즘** 포함) ⭐
   - VisitLogService 구현 (출퇴근 체크인/통계 기능)
   - Service 모듈 패키지 정리 (__init__.py)
-- **2026-04-22 오후**: Phase 4 시작 - 메인 대시보드 UI 구현
+- **2026-04-22 오후 (1차)**: Phase 4 시작 - 메인 대시보드 UI 구현
   - feature/ui-main-dashboard 브랜치 생성
   - MainWindow 클래스 구현 (헤더, 통계 카드, 빠른 작업 버튼)
   - DashboardCard 위젯 구현
   - main.py 수정 (UI 통합, 인코딩 문제 해결)
   - 애플리케이션 실행 테스트 성공
+  - dev 브랜치로 머지 및 푸시 완료
+- **2026-04-23 오전**: 고객 등록 화면 구현
+  - feature/ui-patient-form 브랜치 생성
+  - PatientForm 다이얼로그 구현
+    - 기본 정보, 서비스 정보, 보호자 정보, 추가 정보 입력 폼
+    - 유효성 검증 로직 (필수 필드 체크)
+    - PatientService 연동 (등록/수정 기능)
+    - 스타일시트 적용 (모던한 UI 디자인)
+  - MainWindow에 PatientService 연동
+  - 고객 등록 버튼 이벤트 핸들러 구현
+  - 애플리케이션 실행 테스트 성공
 - **Next Step**:
-  - 고객/직원 등록 화면 구현 (feature/ui-patient-staff-form)
+  - 직원 등록 화면 구현 (feature/ui-staff-form)
+  - 고객 목록 조회 화면 구현 (feature/ui-patient-list)
   - 메인 대시보드에 실시간 통계 연동
-- **현재 브랜치**: `feature/ui-main-dashboard`
+- **현재 브랜치**: `feature/ui-patient-form`
 
 ## 🚩 미해결 이슈 및 메모
 - [ ] SQLite 암호화 라이브러리(`pysqlcipher3`)가 Windows 환경에서 컴파일 에러가 발생하는지 확인 필요
