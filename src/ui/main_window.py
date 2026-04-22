@@ -2,6 +2,7 @@
 메인 대시보드 윈도우
 효심케어 관리자용 메인 화면
 """
+from typing import Optional
 from PyQt6.QtWidgets import (
     QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QLabel, QPushButton, QFrame, QGridLayout, QScrollArea
@@ -17,11 +18,11 @@ from src.service.patient_service import PatientService
 class DashboardCard(QFrame):
     """대시보드 카드 위젯 (통계 정보 표시용)"""
 
-    def __init__(self, title: str, value: str, icon: str = None, parent=None):
+    def __init__(self, title: str, value: str, icon: Optional[str] = None, parent=None):
         super().__init__(parent)
         self.setup_ui(title, value, icon)
 
-    def setup_ui(self, title: str, value: str, icon: str):
+    def setup_ui(self, title: str, value: str, icon: Optional[str]):
         """UI 초기화"""
         self.setFrameShape(QFrame.Shape.StyledPanel)
         self.setFrameShadow(QFrame.Shadow.Raised)
