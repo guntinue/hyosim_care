@@ -4,5 +4,6 @@ UI Layer - PyQt6 기반 사용자 인터페이스
 """
 from .main_window import MainWindow, DashboardCard
 from .patient_form import PatientForm
+from .patient_list import PatientListDialog
 
-__all__ = ['MainWindow', 'DashboardCard', 'PatientForm']
+__all__ = ['MainWindow', 'DashboardCard', 'PatientForm', 'PatientListDialog']
