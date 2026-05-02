@@ -13,6 +13,7 @@ from PyQt6.QtGui import QFont, QIcon
 from src.config.settings import logger, APP_NAME, APP_VERSION
 from src.config.database import db_manager
 from src.service.patient_service import PatientService
+from src.service.staff_service import StaffService
 
 
 class DashboardCard(QFrame):
@@ -74,6 +75,7 @@ class MainWindow(QMainWindow):
 
         # Service 레이어 초기화
         self.patient_service = PatientService(db_manager)
+        self.staff_service = StaffService(db_manager)
 
         self.setup_ui()
         logger.info("메인 윈도우 초기화 완료")
@@ -293,7 +295,13 @@ class MainWindow(QMainWindow):
     def on_register_staff(self):
         """직원 등록 버튼 클릭"""
         logger.info("직원 등록 버튼 클릭됨")
-        # TODO: 직원 등록 화면 열기
+        from src.ui.staff_form import StaffForm
+
+        dialog = StaffForm(self.staff_service, parent=self)
+        if dialog.exec():
+            # 등록/수정 성공 시 대시보드 갱신
+            logger.info("직원 등록/수정 성공 - 대시보드 갱신 필요")
+            # TODO: 대시보드 통계 갱신
 
     def on_manage_schedule(self):
         """일정 관리 버튼 클릭"""
