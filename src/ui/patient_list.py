@@ -190,7 +190,9 @@ class PatientListDialog(QDialog):
             if search_type == "name":
                 self.patients = self.patient_service.search_patients_by_name(search_text)
             elif search_type == "phone":
-                self.patients = self.patient_service.search_patients_by_phone(search_text)
+                # get_patient_by_phone는 단일 Patient 또는 None 반환
+                patient = self.patient_service.get_patient_by_phone(search_text)
+                self.patients = [patient] if patient else []
             elif search_type == "service_type":
                 # 서비스 유형 매핑
                 service_map = {
