@@ -101,13 +101,13 @@ class PatientService(BaseService[Patient]):
             repo = PatientRepository(session)
             return repo.get_by_id(patient_id)
 
-    def get_all_patients(self, skip: int = 0, limit: int = 100) -> List[Patient]:
+    def get_all_patients(self, skip: int = 0, limit: Optional[int] = 100) -> List[Patient]:
         """
         모든 활성 고객 조회
 
         Args:
             skip: 건너뛸 개수
-            limit: 조회할 최대 개수
+            limit: 조회할 최대 개수 (None이면 전체 조회)
 
         Returns:
             List[Patient]: 고객 리스트

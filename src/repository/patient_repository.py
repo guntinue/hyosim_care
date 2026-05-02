@@ -49,17 +49,21 @@ class PatientRepository(BaseRepository[Patient]):
             logger.error(f"고객 조회 실패: {e}")
             raise
 
-    def get_all(self, skip: int = 0, limit: int = 100) -> List[Patient]:
+    def get_all(self, skip: int = 0, limit: Optional[int] = 100) -> List[Patient]:
         """모든 고객 조회 (활성 고객만)"""
         try:
-            patients = (
+            query = (
                 self.session.query(Patient)
                 .filter(Patient.is_active == True)
                 .order_by(Patient.created_at.desc())
                 .offset(skip)
-                .limit(limit)
-                .all()
             )
+
+            # limit이 None이 아닐 때만 적용
+            if limit is not None:
+                query = query.limit(limit)
+
+            patients = query.all()
             logger.debug(f"고객 목록 조회 성공: {len(patients)}명")
             return patients
         except Exception as e:

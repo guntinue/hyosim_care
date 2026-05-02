@@ -167,9 +167,10 @@ class PatientListDialog(QDialog):
         return layout
 
     def load_patients(self):
-        """전체 고객 목록 로드"""
+        """전체 고객 목록 로드 (제한 없이 모든 고객 조회)"""
         try:
-            self.patients = self.patient_service.get_all_patients()
+            # limit=None으로 전체 고객 조회
+            self.patients = self.patient_service.get_all_patients(limit=None)
             self.populate_table(self.patients)
             logger.info(f"고객 목록 로드 완료: {len(self.patients)}명")
         except Exception as e:
