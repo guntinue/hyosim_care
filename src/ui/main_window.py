@@ -203,6 +203,7 @@ class MainWindow(QMainWindow):
         # 빠른 작업 버튼들
         actions = [
             ("고객 등록", self.on_register_patient),
+            ("고객 목록", self.on_view_patient_list),
             ("직원 등록", self.on_register_staff),
             ("일정 관리", self.on_manage_schedule),
             ("방문 일지", self.on_visit_log),
@@ -289,6 +290,14 @@ class MainWindow(QMainWindow):
             # 등록/수정 성공 시 대시보드 갱신
             logger.info("고객 등록/수정 성공 - 대시보드 갱신 필요")
             # TODO: 대시보드 통계 갱신
+
+    def on_view_patient_list(self):
+        """고객 목록 버튼 클릭"""
+        logger.info("고객 목록 버튼 클릭됨")
+        from src.ui.patient_list import PatientListDialog
+
+        dialog = PatientListDialog(self.patient_service, parent=self)
+        dialog.exec()
 
     def on_register_staff(self):
         """직원 등록 버튼 클릭"""
