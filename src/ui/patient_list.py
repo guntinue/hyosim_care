@@ -2,6 +2,7 @@
 """
 고객 목록 조회 화면
 """
+import re
 from PyQt6.QtWidgets import (
     QDialog, QVBoxLayout, QHBoxLayout, QTableWidget,
     QTableWidgetItem, QPushButton, QLineEdit, QLabel,
@@ -194,20 +195,21 @@ class PatientListDialog(QDialog):
                 patient = self.patient_service.get_patient_by_phone(search_text)
                 self.patients = [patient] if patient else []
             elif search_type == "service_type":
-                # 서비스 유형 매핑 (전체 라벨 및 약어 모두 지원)
+                # 서비스 유형 매핑 (공백/언더스코어 제거된 키로 통일)
                 service_map = {
                     "방문요양": ServiceType.HOME_CARE,
                     "방문": ServiceType.HOME_CARE,
                     "데이케어": ServiceType.DAY_CARE,
                     "데이": ServiceType.DAY_CARE,
                     "주간보호": ServiceType.DAY_CARE,
-                    "home_care": ServiceType.HOME_CARE,
+                    "homecare": ServiceType.HOME_CARE,
                     "home": ServiceType.HOME_CARE,
-                    "day_care": ServiceType.DAY_CARE,
+                    "daycare": ServiceType.DAY_CARE,
                     "day": ServiceType.DAY_CARE,
                 }
-                # 정규화: 공백 제거 및 소문자 변환
-                normalized_text = search_text.strip().lower()
+                # 정규화: 내부 공백 및 언더스코어 제거 후 소문자 변환
+                # "방문 요양" -> "방문요양", "day care" -> "daycare", "home_care" -> "homecare"
+                normalized_text = re.sub(r"[\s_]+", "", search_text).lower()
                 service_type = service_map.get(normalized_text)
                 if service_type:
                     self.patients = self.patient_service.get_patients_by_service_type(service_type)
